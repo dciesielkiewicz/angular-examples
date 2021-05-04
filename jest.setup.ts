@@ -1,10 +1,11 @@
-import 'jest-preset-angular';
+import 'jest-preset-angular/setup-jest';
+import '@testing-library/jest-dom';
+
 import { APP_BASE_HREF } from '@angular/common';
 import { NgModule } from '@angular/core';
-import '@testing-library/jest-dom';
 import { configure } from '@testing-library/angular';
 import { AppRoutingModule } from './src/app/app-routing.module';
-import { MaterialModule } from './src/app/material.module';
+import { MaterialModule } from './src/app/material';
 
 @NgModule({
   providers: [
