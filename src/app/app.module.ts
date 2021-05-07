@@ -12,6 +12,7 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { LoadingButtonComponent } from './shared/loading-button/loading-button.component';
 import { TodoComponent } from './todo/todo.component';
+import { TodoListComponent } from './todo/todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TodoComponent } from './todo/todo.component';
     LoaderComponent,
     LoadingButtonComponent,
     HomeComponent,
-    TodoComponent
+    TodoComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,

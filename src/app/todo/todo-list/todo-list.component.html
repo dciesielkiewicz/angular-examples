@@ -1,0 +1,5 @@
+<h1>Todo list content</h1>
+<ul>
+  <li *ngFor="let todo of todos">{{ todo.title }}</li>
+</ul>
+<button (click)="addTodo()">Add todo</button>
