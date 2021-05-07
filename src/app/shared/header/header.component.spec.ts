@@ -3,7 +3,7 @@ import { HeaderComponent } from './header.component';
 
 const children = 'children';
 
-describe('Header', () => {
+describe('HeaderComponent', () => {
   test('Should render children', async () => {
     const { getByLabelText } = await render(`<app-header>${children}</app-header>`, {
       declarations: [HeaderComponent]

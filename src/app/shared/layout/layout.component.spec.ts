@@ -5,7 +5,7 @@ import { HeaderComponent } from '../header/header.component';
 
 const children = 'children';
 
-describe('Layout', () => {
+describe('LayoutComponent', () => {
   test('Should render children', async () => {
     const { getByText } = await render(`<app-layout>${children}</app-layout>`, {
       declarations: [BackgroundComponent, HeaderComponent, LayoutComponent]

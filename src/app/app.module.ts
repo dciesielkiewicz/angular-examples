@@ -4,12 +4,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material';
 import { BackgroundComponent } from './shared/background/background.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { LoadingButtonComponent } from './shared/loading-button/loading-button.component';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { LoadingButtonComponent } from './shared/loading-button/loading-button.c
     HeaderComponent,
     LayoutComponent,
     LoaderComponent,
-    LoadingButtonComponent
+    LoadingButtonComponent,
+    HomeComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import { BackgroundComponent } from './background.component';
 
 const children = 'children';
 
-describe('Background', () => {
+describe('BackgroundComponent', () => {
   test('Should render children', async () => {
     const { getByTestId, getByText } = await render(`<app-background>${children}</app-background>`, {
       declarations: [BackgroundComponent]
