@@ -1,5 +1,25 @@
-<mat-toolbar color="primary" class="mat-elevation-z4">
-  <button mat-icon-button aria-label="Toggle menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" [opened]="opened" aria-label="Sidenav">
+    <div class="pt-2">
+      <mat-nav-list aria-label="Navigation menu">
+        <a mat-list-item class="list-item" routerLink="/" (click)="opened = false">
+          <mat-icon mat-list-icon>home</mat-icon>
+          <div mat-line>Home</div>
+        </a>
+        <a mat-list-item class="list-item" routerLink="/todo" (click)="opened = false">
+          <mat-icon mat-list-icon>list</mat-icon>
+          <div mat-line>Todo</div>
+        </a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z4">
+      <button mat-icon-button aria-label="Toggle menu" (click)="opened = true">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
