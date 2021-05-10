@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+
+:host {
+  .wrapper {
+    border-bottom: 1px solid mat-color($mat-grey, 300);;
+  }
+  .checked {
+    text-decoration: line-through;
+  }
+  .clickable {
+    padding: 25px 0;
+    cursor: pointer;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+}

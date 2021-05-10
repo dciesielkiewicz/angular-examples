@@ -1,0 +1,39 @@
+<form [formGroup]="todoItemForm" (submit)="submitHandler($event)">
+  <div class="wrapper">
+    <div class="row align-items-center justify-content-center">
+      <div class="col flex-shrink-1 flex-grow-0">
+        <mat-checkbox aria-label="Toggle Todo" [formControl]="checked" (change)="toggleTodo()"></mat-checkbox>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="standard" *ngIf="editable; else clickableTodo">
+          <input [class.checked]="checked.value" matInput #titleInput [formControl]="title" placeholder="Type your todo here" required>
+          <mat-error *ngIf="title.invalid">Title is invalid</mat-error>
+        </mat-form-field>
+        <ng-template #clickableTodo>
+          <div (click)="handleToggleTodoClicked()" class="clickable" [class.checked]="checked.value">
+            {{ title.value }}
+          </div>
+        </ng-template>
+      </div>
+      <div class="col flex-shrink-1 flex-grow-0">
+        <div class="row">
+          <div class="col" *ngIf="editable; else nonEditableActions">
+            <app-loading-button *ngIf="isSubmitting; else submitButton"></app-loading-button>
+            <ng-template #submitButton>
+              <button mat-icon-button type="submit">
+                <mat-icon>check</mat-icon>
+              </button>
+            </ng-template>
+          </div>
+          <ng-template #nonEditableActions>
+            <div class="col">
+              <button mat-icon-button (click)="enableEdit()">
+                <mat-icon aria-label="Edit todo">edit</mat-icon>
+              </button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

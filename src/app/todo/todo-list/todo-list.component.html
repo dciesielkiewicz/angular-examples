@@ -1,5 +1,5 @@
-<h1>Todo list content</h1>
-<ul>
-  <li *ngFor="let todo of todos">{{ todo.title }}</li>
-</ul>
-<button (click)="addTodo()">Add todo</button>
+<app-loader *ngIf="loading; else todoList"></app-loader>
+<ng-template #todoList>
+  <app-todo-item *ngFor="let todo of todos" [todo]="todo"></app-todo-item>
+  <app-add-todo (addTodo)="addTodo($event)"></app-add-todo>
+</ng-template>

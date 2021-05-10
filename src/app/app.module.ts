@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -13,6 +15,8 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { LoadingButtonComponent } from './shared/loading-button/loading-button.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
+import { AddTodoComponent } from './todo/add-todo/add-todo.component';
+import { TodoItemComponent } from './todo/todo-item/todo-item.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +28,16 @@ import { TodoListComponent } from './todo/todo-list/todo-list.component';
     LoadingButtonComponent,
     HomeComponent,
     TodoComponent,
-    TodoListComponent
+    TodoListComponent,
+    AddTodoComponent,
+    TodoItemComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MaterialModule,
     AppRoutingModule,
   ],

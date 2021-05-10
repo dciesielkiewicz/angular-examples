@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Todo } from 'app/models/todo';
 import { TodoService } from 'app/services/todo.service';
 
@@ -7,15 +8,26 @@ import { TodoService } from 'app/services/todo.service';
   templateUrl: './todo-list.component.html',
 })
 export class TodoListComponent implements OnInit {
+
+  loading = true;
   todos: Todo[] = [];
 
-  constructor(private todoService: TodoService) { }
+  constructor(private snackbar: MatSnackBar, private todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.todos = this.todoService.fetchTodos();
+    this.todoService.fetchTodos().subscribe({
+      next: (todos: Todo[]) => {
+        this.todos = todos;
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
+        this.snackbar.open('Error while fetching todos', 'Close');
+      }
+    });
   }
 
-  addTodo(): void {
-    this.todos = this.todoService.addTodo();
+  addTodo(todo: Todo): void {
+    this.todos.push(todo);
   }
 }
