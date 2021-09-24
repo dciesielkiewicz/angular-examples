@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "jest --coverage --config ./jest.config.js",
-    "test:watch": "jest -o --watch --config ./jest.config.js",
+    "test:watch": "jest -o --detectOpenHandles --watch --config ./jest.config.js",
     "lint": "ng lint"
   },
   "private": true,

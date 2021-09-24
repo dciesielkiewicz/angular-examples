@@ -30,4 +30,11 @@ export class TodoListComponent implements OnInit {
   addTodo(todo: Todo): void {
     this.todos.push(todo);
   }
+
+  deleteTodo(todo: Todo): void {
+    const index = this.todos.indexOf(todo);
+    if (index !== -1) {
+      this.todos.splice(index);
+    }
+  }
 }

@@ -7,7 +7,7 @@
       <div class="col">
         <mat-form-field appearance="standard" *ngIf="editable; else clickableTodo">
           <input [class.checked]="checked.value" matInput #titleInput [formControl]="title" placeholder="Type your todo here" required>
-          <mat-error *ngIf="title.invalid">Title is invalid</mat-error>
+          <mat-error *ngIf="title.invalid">Title is required</mat-error>
         </mat-form-field>
         <ng-template #clickableTodo>
           <div (click)="handleToggleTodoClicked()" class="clickable" [class.checked]="checked.value">
@@ -16,7 +16,7 @@
         </ng-template>
       </div>
       <div class="col flex-shrink-1 flex-grow-0">
-        <div class="row">
+        <div class="row flex-nowrap no-gutters">
           <div class="col" *ngIf="editable; else nonEditableActions">
             <app-loading-button *ngIf="isSubmitting; else submitButton"></app-loading-button>
             <ng-template #submitButton>
@@ -32,6 +32,14 @@
               </button>
             </div>
           </ng-template>
+          <div class="col">
+            <app-loading-button *ngIf="todo.deleteLoading; else deleteButton"></app-loading-button>
+            <ng-template #deleteButton>
+              <button mat-icon-button (click)="showDeleteTodoModal()" >
+                <mat-icon aria-label="Delete todo">delete</mat-icon>
+              </button>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>

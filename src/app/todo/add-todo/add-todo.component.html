@@ -2,18 +2,22 @@
   <div class="row align-items-center justify-content-center">
     <div class="col">
       <mat-form-field appearance="standard" >
-        <input matInput name="title" #addTodoInput [(ngModel)]="title" placeholder="Type your next todo" />
+        <input matInput name="title" #addTodoInput [formControl]="title" placeholder="Type your next todo" required />
+        <mat-error *ngIf="title.invalid">Title is required</mat-error>
       </mat-form-field>
     </div>
     <div class="col flex-shrink-1 flex-grow-0">
-      <button mat-icon-button type="submit">
-        <mat-icon aria-label="Submit todo">check</mat-icon>
-      </button>
+      <app-loading-button *ngIf="isSubmitting; else submitButton"></app-loading-button>
+      <ng-template #submitButton>
+        <button mat-icon-button type="submit">
+          <mat-icon aria-label="Submit todo">check</mat-icon>
+        </button>
+      </ng-template>
     </div>
   </div>
   <div>
     <button mat-icon-button color="primary" (click)="focusAdd()">
-      <mat-icon aria-label="Add todo">add</mat-icon>
+      <mat-icon aria-label="Focus add todo input">add</mat-icon>
     </button>
   </div>
 </form>

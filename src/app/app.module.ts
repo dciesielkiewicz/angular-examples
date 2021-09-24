@@ -17,6 +17,7 @@ import { TodoComponent } from './todo/todo.component';
 import { TodoListComponent } from './todo/todo-list/todo-list.component';
 import { AddTodoComponent } from './todo/add-todo/add-todo.component';
 import { TodoItemComponent } from './todo/todo-item/todo-item.component';
+import { DeleteTodoComponent } from './todo/delete-todo/delete-todo.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TodoItemComponent } from './todo/todo-item/todo-item.component';
     TodoComponent,
     TodoListComponent,
     AddTodoComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    DeleteTodoComponent
   ],
   imports: [
     BrowserModule,

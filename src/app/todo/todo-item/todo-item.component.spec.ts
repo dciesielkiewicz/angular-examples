@@ -6,6 +6,7 @@ const todo: Todo = {
   id: 'todoId1',
   title: 'Todo 1',
   checked: false,
+  deleteLoading: false,
 };
 
 describe('TodoItemComponent', () => {

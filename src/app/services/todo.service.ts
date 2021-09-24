@@ -34,4 +34,8 @@ export class TodoService {
     };
     return this.http.put<Todo>(`${environment.apiUrl}/todos/${todo.id}`, updatedTodo, httpOptions);
   }
+
+  deleteTodo(todo: Todo): Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/todos/${todo.id}`, httpOptions);
+  }
 }

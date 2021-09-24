@@ -1,9 +1,13 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatInput } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { Todo } from 'app/models/todo';
 import { TodoService } from 'app/services/todo.service';
+
+import { DeleteTodoComponent } from '../delete-todo/delete-todo.component';
 
 @Component({
   selector: 'app-todo-item',
@@ -12,6 +16,7 @@ import { TodoService } from 'app/services/todo.service';
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo: Todo;
+  @Output() deleteTodo = new EventEmitter<Todo>();
   @ViewChild('titleInput') titleInput: ElementRef<MatInput>;
 
   editable = false;
@@ -23,6 +28,7 @@ export class TodoItemComponent implements OnInit {
 
   constructor(
     fb: FormBuilder,
+    readonly dialog: MatDialog,
     private snackbar: MatSnackBar,
     private todoService: TodoService
   ) {
@@ -72,7 +78,18 @@ export class TodoItemComponent implements OnInit {
       error: () => {
         this.isSubmitting = false;
         this.snackbar.open('Error while updating todo', 'Close');
-      }
+      },
+    });
+  }
+
+  showDeleteTodoModal(): void {
+    const deleteDialogRef = this.dialog.open(DeleteTodoComponent, {
+      data: {
+        todo: this.todo,
+      },
+    });
+    deleteDialogRef.componentInstance.deleteTodo.subscribe((todo) => {
+      this.deleteTodo.emit(todo);
     });
   }
 }
